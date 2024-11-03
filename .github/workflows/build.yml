@@ -105,6 +105,12 @@ jobs:
           channel: 'stable'
           cache: true
 
+      - name: Install flutter_distributor
+        run: dart pub global activate flutter_distributor
+      
+      - name: Add flutter_distributor to PATH
+        run: echo "${HOME}/.pub-cache/bin" >> $GITHUB_PATH
+      
       - name: Install Dependencies
         run: |
           flutter pub get
@@ -178,63 +184,63 @@ jobs:
           path: ./out
           retention-days: 1
 # 新增的 iOS 构建作业
-  build_ios:
-    needs: test
-    permissions: write-all
-    runs-on: macos-12
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # build_ios:
+  #   needs: test
+  #   permissions: write-all
+  #   runs-on: macos-12
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
   
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2.13.0
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: 'stable'
-          cache: true
+  #     - name: Setup Flutter
+  #       uses: subosito/flutter-action@v2.13.0
+  #       with:
+  #         flutter-version: ${{ env.FLUTTER_VERSION }}
+  #         channel: 'stable'
+  #         cache: true
   
-      - name: Clean Flutter Build
-        run: |
-          flutter clean
+  #     - name: Clean Flutter Build
+  #       run: |
+  #         flutter clean
   
-      - name: Get Flutter Packages
-        run: |
-          flutter pub get
+  #     - name: Get Flutter Packages
+  #       run: |
+  #         flutter pub get
   
-      - name: Reinstall iOS Dependencies
-        run: |
-          cd ios
-          rm -rf Pods Podfile.lock
-          pod install
+  #     - name: Reinstall iOS Dependencies
+  #       run: |
+  #         cd ios
+  #         rm -rf Pods Podfile.lock
+  #         pod install
   
-      - name: Install tree
-        run: |
-          brew install tree
+  #     - name: Install tree
+  #       run: |
+  #         brew install tree
   
-      - name: Prepare for iOS
-        run: |
-          make ios-prepare
-          tree
+  #     - name: Prepare for iOS
+  #       run: |
+  #         make ios-prepare
+  #         tree
           
-      - name: Cache CocoaPods
-        uses: actions/cache@v2
-        with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+  #     - name: Cache CocoaPods
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: Pods
+  #         key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
   
-      - name: Build iOS
-        run: |
-          make ios-release
+  #     - name: Build iOS
+  #       run: |
+  #         make ios-release
   
-      - name: Copy to out iOS
-        run: |
-          mkdir out
-          mv dist/*/*.ipa out/${TARGET_NAME_ipa}.ipa
+  #     - name: Copy to out iOS
+  #       run: |
+  #         mkdir out
+  #         mv dist/*/*.ipa out/${TARGET_NAME_ipa}.ipa
   
-      - name: Upload iOS Artifact
-        if: env.UPLOAD_ARTIFACT == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: iOS
-          path: ./out
-          retention-days: 1
+  #     - name: Upload iOS Artifact
+  #       if: env.UPLOAD_ARTIFACT == 'true'
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: iOS
+  #         path: ./out
+  #         retention-days: 1
