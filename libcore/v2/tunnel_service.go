@@ -72,8 +72,8 @@ func makeTunnelConfig(Ipv6 bool, ServerPort int32, StrictRoute bool, EndpointInd
 		  "rules": [
 			{
 				"process_name":[
-					"一个扶梯.exe",
-					"一个扶梯",
+					"Hiddify.exe",
+					"Hiddify",
 					"HiddifyCli",
 					"HiddifyCli.exe"
 					],
