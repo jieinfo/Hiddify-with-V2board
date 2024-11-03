@@ -1,9 +1,9 @@
 app_id: 6L903538-42B1-4596-G479-BJ779F21A65D
 publisher: afuti
 publisher_url: https://www.afuti.com
-display_name: Hiddify
-executable_name: Hiddify.exe
-output_base_file_name: Hiddify.exe
+display_name: 一个扶梯
+executable_name: 一个扶梯.exe
+output_base_file_name: 一个扶梯.exe
 create_desktop_icon: true
 install_dir_name: "{autopf64}\\afuti"
 setup_icon_file: ..\..\windows\runner\resources\app_icon.ico
