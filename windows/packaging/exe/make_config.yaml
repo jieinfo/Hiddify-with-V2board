@@ -5,7 +5,7 @@ display_name: 一个扶梯
 executable_name: 一个扶梯.exe
 output_base_file_name: 一个扶梯.exe
 create_desktop_icon: true
-install_dir_name: "{autopf64}\\Hiddify"
+install_dir_name: "{autopf64}\\afuti"
 setup_icon_file: ..\..\windows\runner\resources\app_icon.ico
 locales:
   - ar
@@ -14,5 +14,4 @@ locales:
   - ru
   - pt
   - tr
-  - zh
 script_template: inno_setup.sas
