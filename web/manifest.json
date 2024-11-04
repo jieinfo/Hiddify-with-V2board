@@ -1,11 +1,11 @@
 {
-    "name": "Hiddify",
-    "short_name": "Hiddify",
+    "name": "一个扶梯",
+    "short_name": "一个扶梯",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Hiddify",
+    "description": "一个扶梯",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
