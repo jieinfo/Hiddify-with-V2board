@@ -90,7 +90,7 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "afuti" "\0"
-            VALUE "FileDescription", "afuti" "\0"
+            VALUE "FileDescription", "一个扶梯" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "hiddify" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 www.afuti.com. All rights reserved." "\0"
